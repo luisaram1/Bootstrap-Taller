@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Registro de Vehículos</h3>
+
+<form method="POST" class="mb-4">
+    {{ form.hidden_tag() }}
+    {{ form.plate.label }} {{ form.plate(class="form-control") }}
+    {{ form.brand.label }} {{ form.brand(class="form-control") }}
+    {{ form.model.label }} {{ form.model(class="form-control") }}
+    <button class="btn btn-success mt-3">Registrar</button>
+</form>
+
+<h4>Vehículos Registrados</h4>
+<table class="table table-bordered">
+    <tr><th>ID</th><th>Placa</th><th>Marca</th><th>Modelo</th></tr>
+    {% for v in vehicles %}
+    <tr>
+        <td>{{ v.id }}</td>
+        <td>{{ v.plate }}</td>
+        <td>{{ v.brand }}</td>
+        <td>{{ v.model }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
